@@ -11,7 +11,7 @@ $ npm install strudel-cli --global
 ## Usage
 
 ```bash
-$ strudel init <template-name> <project-name>
+$ strudel new <template-name> <project-name>
 ```
 
 ## License

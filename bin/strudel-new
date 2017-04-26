@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+var download = require('download-git-repo');
+var program = require('commander');
+var path = require('path');
+var ora = require('ora');
+var home = require('user-home');
+var scaffolder = require('../src/scaffolder');
+
+program
+  .usage('<template-name> [project-name]')
+  .option('-c, --clone', 'use git clone')
+  .option('--offline', 'use cached template');
+
+program.on('--help', function () {
+  console.log('  Examples:')
+});
+
+program.parse(process.argv);
+if (program.args.length < 1) {
+  return program.help();
+}
+
+var template = 'strudeljs/template-' + program.args[0];
+var name = program.args[1];
+var tmp = path.join(home, '.strudel-templates', template.replace(/\//g, '-'));
+
+if (template) {
+  downloadAndScaffold(template);
+}
+
+function downloadAndScaffold(template) {
+  var spinner = ora('downloading template');
+  spinner.start();
+  download(template, tmp, {clone: false}, function (err) {
+    console.log();
+    console.log(err ? "Error" : "Success");
+    spinner.stop();
+  });
+}
