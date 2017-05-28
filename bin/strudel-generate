@@ -12,7 +12,7 @@ if (program.args.length < 1) {
   return program.help();
 }
 
-var scaffold = 'scaffolds/' + program.args[0] + '.js';
+var scaffold = path.join(__dirname, '../scaffolds/' + program.args[0] + '.js');
 var relative = program.args[2];
 var name = program.args[1];
 var to = path.resolve(relative || '.');

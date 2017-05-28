@@ -1,6 +1,6 @@
 {
   "name": "strudel-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Command line scaffolding for Strudel projects",
   "author": "Mateusz Łuczak <mateusz.luczak@outlook.com>",
   "license": "MIT",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "async": "^2.4.1",
-    "commander": "^2.9.0",
+    "commander": "git+https://github.com/tj/commander.js.git",
     "consolidate": "^0.14.5",
     "download-git-repo": "^1.0.0",
     "handlebars": "^4.0.6",
