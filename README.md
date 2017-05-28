@@ -34,6 +34,8 @@ Template  | Usage
 ```bash
 $ strudel generate component my-new-component
 $ strudel g component my-new-component #using the alias
+# you can also generate component in sub-directories, run
+$ strudel g component my-new-component components #will be generated in components subdirectory
 ```
 
 ## License
