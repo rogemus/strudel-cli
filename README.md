@@ -27,7 +27,7 @@ $ npm install
 Template  | Usage
 ---       | ---
 [Webpack](https://github.com/strudeljs/template-webpack)     | `strudel new webpack my-new-project`
-[Clientlib](https://github.com/strudeljs/template-clientlib) | `strude new clientlib my-new-clientlib`
+[Clientlib](https://github.com/strudeljs/template-clientlib) | `strudel new clientlib my-new-clientlib`
 
 ## Generating components
 
