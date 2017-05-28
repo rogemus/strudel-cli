@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+const path = require('path');
+const program = require('commander');
+const generate = require('../src/generate');
+
+program
+  .usage('<scaffold-name> <name> [path]')
+  .parse(process.argv);
+
+if (program.args.length < 1) {
+  return program.help();
+}
+
+var scaffold = 'scaffolds/' + program.args[0] + '.js';
+var relative = program.args[2];
+var name = program.args[1];
+var to = path.resolve(relative || '.');
+
+if (scaffold && name) {
+  generate(name, scaffold, to, function () {
+    console.log('Generated ' + name + '.js');
+  })
+}

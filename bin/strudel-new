@@ -5,18 +5,13 @@ const program = require('commander');
 const path = require('path');
 const ora = require('ora');
 const home = require('user-home');
-const scaffolder = require('../src/scaffolder');
+const scaffold = require('../src/scaffold');
+const exists = require('fs').existsSync;
+const rm = require('rimraf').sync;
 
 program
   .usage('<template-name> [project-name]')
-  .option('-c, --clone', 'use git clone')
-  .option('--offline', 'use cached template');
-
-program.on('--help', function () {
-  console.log('  Examples:')
-});
-
-program.parse(process.argv);
+  .parse(process.argv);
 
 if (program.args.length < 1) {
   return program.help();
@@ -25,19 +20,21 @@ if (program.args.length < 1) {
 var template = 'strudeljs/template-' + program.args[0];
 var name = program.args[1];
 var tmp = path.join(home, '.strudel-templates', template.replace(/\//g, '-'));
-var to = path.resolve(name || '.')
+var to = path.resolve(name)
 
 if (template) {
   downloadAndScaffold(template);
 }
 
 function downloadAndScaffold(template) {
-  var spinner = ora('downloading template');
+  var spinner = ora('Downloading template');
   spinner.start();
+  if (exists(tmp)) {
+    rm(tmp);
+  }
   download(template, tmp, {clone: false}, function (err) {
-    console.log(err ? "Error" : "Success");
-    scaffolder(name, tmp, to, function (err) {
-      console.log('Generated!')
+    scaffold(name, tmp, to, function (err) {
+      spinner.succeed('Project ' + name + ' generated!');
     })
     spinner.stop();
   });
