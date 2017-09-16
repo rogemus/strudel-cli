@@ -8,6 +8,7 @@ const home = require('user-home');
 const scaffold = require('../src/scaffold');
 const exists = require('fs').existsSync;
 const rm = require('rimraf').sync;
+const chalk = require('chalk');
 
 program
   .usage('<template-name> [project-name]')
@@ -32,10 +33,14 @@ function downloadAndScaffold(template) {
   if (exists(tmp)) {
     rm(tmp);
   }
-  download(template, tmp, {clone: false}, function (err) {
+  download(template, tmp, {clone: false}, function () {
     scaffold(name, tmp, to, function (err) {
-      spinner.succeed('Project ' + name + ' generated!');
-    })
+      if (err) {
+        spinner.fail('Unexpected error.')
+      } else {
+        spinner.succeed('Project ' + chalk.cyan(name) + ' generated! Please run ' + chalk.dim('npm install') + ' followed by ' +  chalk.dim('npm start') + '.');
+      }
+    });
     spinner.stop();
   });
 }
