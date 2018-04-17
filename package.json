@@ -1,6 +1,6 @@
 {
   "name": "strudel-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Command line scaffolding for Strudel projects",
   "author": "Mateusz Łuczak <mateusz.luczak@outlook.com>",
   "license": "MIT",
