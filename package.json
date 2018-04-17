@@ -16,7 +16,7 @@
   "dependencies": {
     "async": "^2.4.1",
     "chalk": "^2.1.0",
-    "commander": "git+https://github.com/tj/commander.js.git",
+    "commander": "^2.15.1",
     "consolidate": "^0.14.5",
     "download-git-repo": "^1.0.0",
     "handlebars": "^4.0.6",
