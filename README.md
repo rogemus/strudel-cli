@@ -28,6 +28,7 @@ Template  | Usage
 ---       | ---
 [Webpack](https://github.com/strudeljs/template-webpack)     | `strudel new webpack my-new-project`
 [Clientlib](https://github.com/strudeljs/template-clientlib) | `strudel new clientlib my-new-clientlib`
+[Theme](https://github.com/strudeljs/template-theme) | `strudel new theme my-theme-name`
 
 ## Generating components
 
